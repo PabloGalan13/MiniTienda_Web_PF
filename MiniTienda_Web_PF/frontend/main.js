@@ -1,42 +1,46 @@
 import { renderHeader } from './components/header.js';
 import { renderProductsList } from './components/productsList.js';
-import { renderCart } from './components/cartStats.js';
+import { renderCart, renderStats } from './components/cartStats.js';
 
-const app = document.getElementById('app'); // [cite: 230]
+const app = document.getElementById('app');
 
-// Función Router principal [cite: 233]
 async function router() {
-    // 1. Limpiar pantalla
-    app.innerHTML = ''; 
+    app.innerHTML = '';
 
-    // 2. Renderizar Header (siempre visible) [cite: 237]
-    renderHeader(app);
+    // 1. Header siempre visible
+    const headerDiv = document.createElement('div');
+    renderHeader(headerDiv);
+    app.appendChild(headerDiv);
 
-    // 3. Contenedor para el contenido variable
+    // 2. Contenedor dinámico
     const contentDiv = document.createElement('div');
     contentDiv.id = 'content';
     app.appendChild(contentDiv);
 
-    // 4. Decidir qué mostrar según el Hash [cite: 240]
+    // 3. Router basado en el hash
     const hash = location.hash;
 
-    switch(hash) {
+    if (!hash) {
+        location.hash = '#/products';
+        return;
+    }
+
+    switch (hash) {
         case '#/cart':
-            renderCart(contentDiv); // [cite: 242]
+            renderCart(contentDiv);
             break;
+
         case '#/stats':
-            // renderStats(contentDiv); // Tu tarea: implementar stats
-            contentDiv.innerHTML = '<h2>Estadísticas (En construcción)</h2>';
+            renderStats(contentDiv);
             break;
+
         case '#/products':
         default:
-            // Si no hay hash, ir a productos por defecto [cite: 244]
-            if (!hash) location.hash = '#/products'; 
-            await renderProductsList(contentDiv); // [cite: 241]
+            await renderProductsList(contentDiv);
             break;
     }
 }
 
-// Escuchar eventos de navegación [cite: 246-247]
+// Eventos
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);

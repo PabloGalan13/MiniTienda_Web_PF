@@ -1,0 +1,182 @@
+/* =============================
+      ESTILOS GENERALES
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+}
+
+#app {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+/* =============================
+      HEADER + NAV
+============================== */
+
+header {
+    background: #4a90e2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+
+/* =============================
+      LISTA DE PRODUCTOS
+============================== */
+
+.product-card {
+    background: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    margin-bottom: 6px;
+}
+
+.product-card button {
+    background: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.product-card button:hover {
+    background: #27ae60;
+}
+
+
+/* =============================
+      TABLAS DEL CARRITO
+============================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th {
+    background: #4a90e2;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+
+/* =============================
+      BOTONES GENERALES
+============================== */
+
+button {
+    cursor: pointer;
+}
+
+button.delete,
+button.clear {
+    background: #e74c3c;
+    padding: 8px 12px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: 0.25s;
+}
+
+button.delete:hover,
+button.clear:hover {
+    background: #c0392b;
+}
+
+
+/* =============================
+      ESTADÍSTICAS
+============================== */
+
+.stats-box {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.stats-box p {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+/* =============================
+      UTILIDADES
+============================== */
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 6px;
+}
