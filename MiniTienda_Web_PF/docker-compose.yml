@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: minitienda_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mini_tienda
+      MYSQL_USER: usuario_tienda
+      MYSQL_PASSWORD: 1233
+    ports:
+      - "3307:3306" #lo puse en el 3307 porque yo ya tengo el 3306 ocupado por el sql local xd
+    volumes:
+      - ./mysql-data:/var/lib/mysql # Esto guarda los datos en una carpeta local para no perderlos

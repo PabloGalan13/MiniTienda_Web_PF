@@ -1,0 +1,14 @@
+# Dependencias de Node 
+node_modules/
+
+# Variables de entorno (seguridad)
+.env
+
+# Archivos de sistema y logs
+.DS_Store
+npm-debug.log
+.idea/
+.vscode/
+
+# Carpeta de datos de Docker 
+mysql-data/
