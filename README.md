@@ -47,7 +47,13 @@ docker-compose up -d
 
 ## Ejecutar el Proyecto
 
-### 1. Iniciar el Backend
+### 1. Insertar datos de muestra
+
+``` bash
+npm run seed
+```
+
+### 2. Iniciar el Backend
 
 ``` bash
 npm run dev
