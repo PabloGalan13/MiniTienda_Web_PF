@@ -1,5 +1,3 @@
-// frontend/components/productsList.js
-
 export async function renderProductsList(container) {
     container.innerHTML = "";
 
@@ -49,12 +47,31 @@ export async function renderProductsList(container) {
             button.textContent = "Agregar al carrito";
             button.classList.add("btn-add");
 
+            // 1️⃣ Si NO hay stock → deshabilitar botón
+            if (product.stock === 0) {
+                button.disabled = true;
+                button.textContent = "Sin stock";
+            }
+
             button.addEventListener("click", () => {
+
                 let cart = JSON.parse(localStorage.getItem("cart")) || [];
                 const existing = cart.find(item => item.id === product.id);
+
+                // 2️⃣ Si ya existe en carrito, validar stock
                 if (existing) {
+                    if (existing.quantity >= product.stock) {
+                        alert("No puedes agregar más. Stock insuficiente.");
+                        return;
+                    }
                     existing.quantity += 1;
-                } else {
+                } 
+                // 3️⃣ Nuevo producto al carrito
+                else {
+                    if (product.stock <= 0) {
+                        alert("Stock agotado.");
+                        return;
+                    }
                     cart.push({
                         id: product.id,
                         name: product.name,
@@ -62,8 +79,10 @@ export async function renderProductsList(container) {
                         quantity: 1
                     });
                 }
+
                 localStorage.setItem("cart", JSON.stringify(cart));
                 alert("Producto agregado");
+
             });
 
             card.appendChild(button);
@@ -72,7 +91,7 @@ export async function renderProductsList(container) {
 
     } catch (error) {
         const msg = document.createElement("div");
-        msg.textContent = "❌ Ocurrió un error al cargar los productos. Intenta más tarde.";
+        msg.textContent = "Ocurrió un error al cargar los productos. Intenta más tarde.";
         msg.style.color = "red";
         msg.style.marginTop = "20px";
         container.appendChild(msg);

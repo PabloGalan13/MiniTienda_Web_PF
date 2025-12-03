@@ -45,19 +45,19 @@ const seedDB = async () => {
     try {
 
         await sequelize.authenticate();
-        console.log('🔗 Conexión exitosa a la base de datos.');
+        console.log('Conexión exitosa a la base de datos.');
 
         await Product.sync({ force: true });
-        console.log('🗑️ Tabla de productos reiniciada.');
+        console.log('Tabla de productos reiniciada.');
 
         await Product.bulkCreate(products);
-        console.log('✅ Productos insertados correctamente.');
+        console.log('Productos insertados correctamente.');
 
     } catch (error) {
-        console.error('❌ Error al insertar datos:', error);
+        console.error('Error al insertar datos:', error);
     } finally {
         await sequelize.close();
-        console.log('👋 Conexión cerrada.');
+        console.log('Conexión cerrada.');
     }
 };
 
